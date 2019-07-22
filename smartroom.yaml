@@ -1,0 +1,171 @@
+DEFAULT_WAKE_WORD: "Luna"
+DEFAULT_SLEEP_WORDS:
+  - "rest"
+  - "sleep"
+  - "terminate"
+KNX_BAOS_SERVER:
+  URL: http://192.168.1.2/rest/
+  USERNAME: admin
+  PASSWORD: admin
+MICROPHONE_MODEL_NAME: ReSpeaker 4 Mic Array
+NOUN_TAGS:
+  - RP
+  - JJ
+  - NN
+  - NNS
+  - DT
+PARAMETERS:
+  - - all
+    - every
+    - everything
+  - - light
+    - lights
+  - - printer
+  - - television
+    - tv
+VERB_TAGS:
+  - VB
+  - VBD
+  - VBG
+  - VBN
+  - VBP
+  - VBZ
+  - IN
+  - RP
+  - RB
+COMMANDS:
+  BAOS: 3
+  PHRASES:
+    1:
+      - "please turn on the lights"
+      - "please turn on the television"
+      - "please turn on the TV"
+      - "please turn on the printer"
+      - "please turn on all"
+      - "please switch on the lights"
+      - "please switch on the television"
+      - "please switch on the TV"
+      - "please switch on the printer"
+      - "please switch on all"
+      - "please open the lights"
+      - "please open the television"
+      - "please open the TV"
+      - "please open the printer"
+      - "please open all"
+      - "please activate the lights"
+      - "please activate the television"
+      - "please activate the TV"
+      - "please activate the printer"
+      - "please activate all"
+      - "please start the lights"
+      - "please start the television"
+      - "please start the TV"
+      - "please start the printer"
+      - "please start all"
+      - "please enable the lights"
+      - "please enable the television"
+      - "please enable the TV"
+      - "please enable the printer"
+      - "please enable all"
+      - "please wake the lights"
+      - "please wake the television"
+      - "please wake the TV"
+      - "please wake the printer"
+      - "please wake all"
+    0:
+      - "please deactivate the lights"
+      - "please deactivate the television"
+      - "please deactivate the TV"
+      - "please deactivate the printer"
+      - "please deactivate all"
+      - "please end the lights"
+      - "please end the television"
+      - "please end the TV"
+      - "please end the printer"
+      - "please end all"
+      - "please kill the lights"
+      - "please kill the television"
+      - "please kill the TV"
+      - "please kill the printer"
+      - "please kill all"
+      - "please shut down the lights"
+      - "please shut down the television"
+      - "please shut down the TV"
+      - "please shut down the printer"
+      - "please shut down all"
+      - "please close the lights"
+      - "please close the television"
+      - "please close the TV"
+      - "please close the printer"
+      - "please close all"
+      - "please switch off the lights"
+      - "please switch off the television"
+      - "please switch off the TV"
+      - "please switch off the printer"
+      - "please switch off all"
+      - "please turn off the lights"
+      - "please turn off the television"
+      - "please turn off the TV"
+      - "please turn off the printer"
+      - "please turn off all"
+      - "please disable the lights"
+      - "please disable the television"
+      - "please disable the TV"
+      - "please disable the printer"
+      - "please disable all"
+      - "please sleep the lights"
+      - "please sleep the television"
+      - "please sleep the TV"
+      - "please sleep the printer"
+      - "please sleep all"
+  WORDS:
+    1:
+      - "open"
+      - "up"
+      - "on"
+      - "in"
+      - "do"
+      - "activate"
+      - "unshut"
+      - "use"
+      - "trigger"
+      - "initiate"
+      - "launch"
+      - "fold"
+      - "set"
+      - "raise"
+      - "lighten"
+      - "load"
+      - "wake"
+      - "summon"
+      - "utilize"
+      - "exhibit"
+      - "uncover"
+      - "roll"
+      - "reveal"
+      - "show"
+    0:
+      - "close"
+      - "down"
+      - "off"
+      - "out"
+      - "n't"
+      - "not"
+      - "deactivate"
+      - "remove"
+      - "stop"
+      - "restrict"
+      - "conceal"
+      - "block"
+      - "zero"
+      - "shut"
+      - "clear"
+      - "strip"
+      - "goodbye"
+      - "farewell"
+      - "unfold"
+      - "unroll"
+      - "kill"
+      - "eliminate"
+      - "unload"
+      - "cover"
