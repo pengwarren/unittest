@@ -47,10 +47,10 @@ class Smartroom(object):
     def __del__(self):
         print(f"{self.__class__.__name__} has been terminated")
 
-    def __response__(self, verbs=None, polarities=None, response=None):
+    def __response__(self, verbs=None, polarities=None):
         verbs = verbs if verbs is not None else self.verbs
         polarities = polarities if polarities is not None else self.polarities
-        response = response if response is not None else self._response
+        response = dict()
 
         try:
             for i in range(len(self.nouns)):
@@ -60,8 +60,8 @@ class Smartroom(object):
             polarity, *_ = polarities
             for i in range(len(self.nouns)):
                 response[self.nouns[i]] = (verb, polarity)
-
-        return response
+        self._response = response
+        return self._response
 
     def __str__(self):
         return str(self._response)
@@ -105,7 +105,7 @@ class Smartroom(object):
 
     @property
     def raw_response(self):
-        return self.__response__(response=dict())
+        return self.__response__()
 
     @property
     def response(self):
@@ -169,7 +169,7 @@ class Smartroom(object):
                         self.verbs += [word]
                         self.polarities += [1]
                     elif word == deactivation_verb:
-                        if word == "n't":
+                        if word in ["n't", "not"]:
                             self.verbs.pop()
                             self.polarities.pop()
                         self.verbs += [word]
@@ -246,11 +246,13 @@ class Smartroom(object):
         verbs = self.verbs
         polarities = self.polarities
 
-        if "n't" in self.verbs:
+        if set(["n't", "not"]).intersection(self.verbs):
             verbs = list(self.verbs)
             polarities = list(self.polarities)
-
-            i = self.verbs.index("n't")
+            try:
+                i = self.verbs.index("n't")
+            except ValueError:
+                i = self.verbs.index("not")
             verbs.pop(i)
             polarities.pop(i)
             verbs[i] = f"!{verbs[i]}"
