@@ -4,7 +4,7 @@ DEFAULT_SLEEP_WORDS:
   - "sleep"
   - "terminate"
 KNX_BAOS_SERVER:
-  URL: http://192.168.1.2/rest/
+  URL: http://192.168.1.4/rest/
   USERNAME: admin
   PASSWORD: admin
 MICROPHONE_MODEL_NAME: ReSpeaker 4 Mic Array
@@ -169,3 +169,40 @@ COMMANDS:
       - "eliminate"
       - "unload"
       - "cover"
+TEST_DATA:
+  - turn on the lights
+  - switch on the light
+  - open the lights
+  - do not switch off the light
+  - don't close the lights
+  - do not shut down the light
+  - turn off the lights
+  - switch off the light
+  - close the lights
+  - don't switch on the light
+  - do not open the lights
+  - shut down the light
+  - turn on the tv
+  - switch on the television
+  - open the tv
+  - do not switch off the television
+  - don't close the tv
+  - do not shut down the television
+  - turn off the tv
+  - switch off the television
+  - close the tv
+  - don't switch on the television
+  - do not open the tv
+  - shut down the television
+  - turn on the printer
+  - switch on the printer
+  - open the printer
+  - don't switch off the printer
+  - do not close the printer
+  - don't shut down the printer
+  - turn off the printer
+  - switch off the printer
+  - close the printer
+  - do not switch on the printer
+  - don't open the printer
+  - shut down the printer

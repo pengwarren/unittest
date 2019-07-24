@@ -58,8 +58,10 @@ class Smartroom(object):
         except IndexError:
             verb, *_ = verbs
             polarity, *_ = polarities
-            for i in range(len(self.nouns)):
-                response[self.nouns[i]] = (verb, polarity)
+            response = {
+                self.nouns[i]: (verb, polarity)
+                for i in range(len(self.nouns))
+            }
         self._response = response
         return self._response
 
@@ -169,11 +171,14 @@ class Smartroom(object):
                         self.verbs += [word]
                         self.polarities += [1]
                     elif word == deactivation_verb:
-                        if word in ["n't", "not"]:
+                        if self.verbs and word in ["n't", "not"]:
                             self.verbs.pop()
                             self.polarities.pop()
                         self.verbs += [word]
                         self.polarities += [0]
+
+        if (self.nouns and self.verbs and self.polarities) != True:
+            self._response = "?"
 
     @property
     def tags(self):
@@ -199,14 +204,6 @@ class Smartroom(object):
             for label, texts in self.configurations["COMMANDS"]["PHRASES"].items()
             for text in texts
         ]
-
-    def get_microphone_index(self):
-        microphone_index, = [
-            index
-            for index, name in enumerate(Speech.Microphone.list_microphone_names())
-            if self.configurations["MICROPHONE_MODEL_NAME"].lower() in name.lower()
-        ]
-        return microphone_index
 
     def convert_speech_to_text(self):
         try:
@@ -234,12 +231,13 @@ class Smartroom(object):
             if tag in self.configurations["VERB_TAGS"]
         }
 
-    def wait_for_wake_word(self, wake_word):
-        while self.convert_speech_to_text() != wake_word.lower():
-            self.state = self.IDLE
-
-        self.state = self.WAKE
-        return self.convert_speech_to_text()
+    def get_microphone_index(self):
+        microphone_index, = [
+            index
+            for index, name in enumerate(Speech.Microphone.list_microphone_names())
+            if self.configurations["MICROPHONE_MODEL_NAME"].lower() in name.lower()
+        ]
+        return microphone_index
 
     def perform_classification(self, is_naive=False):
         self.state = self.NLPM
@@ -283,6 +281,13 @@ class Smartroom(object):
         self.verify_status_code(response)
         return response
 
+    def wait_for_wake_word(self, wake_word):
+        while self.convert_speech_to_text() != wake_word.lower():
+            self.state = self.IDLE
+
+        self.state = self.WAKE
+        return self.convert_speech_to_text()
+
     @classmethod
     def get_configuration_file(cls):
         try:
@@ -296,3 +301,10 @@ class Smartroom(object):
     def verify_status_code(cls, response):
         if response.status_code not in (Requests.codes.ok, Requests.codes.no_content):
             response.raise_for_status()
+
+    @classmethod
+    def throw_parameter_exception(cls):
+        raise Smartroom.ParameterError(f"{cls.__name__} received bad input")
+
+    class ParameterError(Exception):
+        pass
