@@ -4,7 +4,7 @@ DEFAULT_SLEEP_WORDS:
   - "sleep"
   - "terminate"
 KNX_BAOS_SERVER:
-  URL: http://192.168.1.4/rest/
+  URL: http://192.168.1.6/rest/
   USERNAME: admin
   PASSWORD: admin
 MICROPHONE_MODEL_NAME: ReSpeaker 4 Mic Array
@@ -20,9 +20,13 @@ PARAMETERS:
     - everything
   - - light
     - lights
+    - all lights
   - - printer
+    - all printers
   - - television
     - tv
+    - all television
+    - all tv
 VERB_TAGS:
   - VB
   - VBD
@@ -88,11 +92,11 @@ COMMANDS:
       - "please kill the TV"
       - "please kill the printer"
       - "please kill all"
-      - "please shut down the lights"
-      - "please shut down the television"
-      - "please shut down the TV"
-      - "please shut down the printer"
-      - "please shut down all"
+      - "please shutdown the lights"
+      - "please shutdown the television"
+      - "please shutdown the TV"
+      - "please shutdown the printer"
+      - "please shutdown all"
       - "please close the lights"
       - "please close the television"
       - "please close the TV"
@@ -175,34 +179,34 @@ TEST_DATA:
   - open the lights
   - do not switch off the light
   - don't close the lights
-  - do not shut down the light
+  - do not shutdown the light
   - turn off the lights
   - switch off the light
   - close the lights
   - don't switch on the light
   - do not open the lights
-  - shut down the light
+  - shutdown the light
   - turn on the tv
   - switch on the television
   - open the tv
   - do not switch off the television
   - don't close the tv
-  - do not shut down the television
+  - do not shutdown the television
   - turn off the tv
   - switch off the television
   - close the tv
   - don't switch on the television
   - do not open the tv
-  - shut down the television
+  - shutdown the television
   - turn on the printer
   - switch on the printer
   - open the printer
   - don't switch off the printer
   - do not close the printer
-  - don't shut down the printer
+  - don't shutdown the printer
   - turn off the printer
   - switch off the printer
   - close the printer
   - do not switch on the printer
   - don't open the printer
-  - shut down the printer
+  - shutdown the printer

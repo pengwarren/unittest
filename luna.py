@@ -1,9 +1,9 @@
 from smartroom import Smartroom
 
 luna = Smartroom()
-# for luna.text in luna.configurations["TEST_DATA"]:
-for luna.text in ["please don't turn on the lights"]:
+while luna.text not in luna.configurations["DEFAULT_SLEEP_WORDS"]:
     try:
+        luna.wait_for_wake_word(luna.configurations["DEFAULT_WAKE_WORD"])
         print(luna.text)
         if luna.response:
             luna.throw_parameter_exception()

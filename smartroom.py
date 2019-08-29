@@ -177,8 +177,10 @@ class Smartroom(object):
                         self.verbs += [word]
                         self.polarities += [0]
 
-        if (self.nouns and self.verbs and self.polarities) != True:
+        if not (self.nouns and self.verbs and self.polarities):
             self._response = "?"
+        else:
+            self._response = dict()
 
     @property
     def tags(self):
