@@ -6,11 +6,16 @@ while luna.text not in luna.configurations["DEFAULT_SLEEP_WORDS"]:
         luna.wait_for_wake_word(luna.configurations["DEFAULT_WAKE_WORD"])
         print(luna.text)
         if luna.response:
-            luna.throw_parameter_exception()
-        luna.perform_classification()
-        print(luna)
-        luna.perform_naive_bayes_classification()
-        print(luna)
+            try:
+                luna.perform_naive_bayes_classification()
+                print(luna)
+            except:
+                luna.throw_parameter_exception()
+        else:
+            luna.perform_classification()
+            print(luna)
+            luna.perform_naive_bayes_classification()
+            print(luna)
         response = luna.perform_request(luna.POST, "login", luna.credentials)
         for parameter, (action, state) in luna.response.items():
             luna.telegram = False if state == 0 else True
@@ -73,6 +78,9 @@ while luna.text not in luna.configurations["DEFAULT_SLEEP_WORDS"]:
         print(e)
         continue
     except NotImplementedError:
+        continue
+    except:
+        print("Smartroom failed to understand the words")
         continue
 luna.state = luna.BACK
 del luna

@@ -34,6 +34,7 @@ class Smartroom(object):
         self.POST = Requests.post
         self.PUTS = Requests.put
 
+        ReSpeaker.set_color_palette(0x6C3082, 0xDA70D6)
         self.state = self.NLPM
         self.configurations = self.get_configuration_file()
         self.microphone = Speech.Microphone(device_index=self.get_microphone_index())
@@ -48,15 +49,15 @@ class Smartroom(object):
         print(f"{self.__class__.__name__} has been terminated")
 
     def __response__(self, verbs=None, polarities=None):
-        verbs = verbs if verbs is not None else self.verbs
-        polarities = polarities if polarities is not None else self.polarities
+        verbs = verbs if verbs is not None and verbs else self.verbs
+        polarities = polarities if polarities is not None and polarities else self.polarities
         response = dict()
 
         try:
             for i in range(len(self.nouns)):
                 response[self.nouns[i]] = (verbs[i], polarities[i])
         except IndexError:
-            verb, *_ = verbs
+            verb, *_ = verbs if verbs else "?"
             polarity, *_ = polarities
             response = {
                 self.nouns[i]: (verb, polarity)
@@ -220,7 +221,7 @@ class Smartroom(object):
             print(f"{self.__class__.__name__} failed to communicate with API")
             return None
         except Speech.UnknownValueError:
-            print(f"{self.__class__.__name__} failed to understand the spoken words")
+            print(f"{self.__class__.__name__} failed to hear the spoken words")
             return None
         except KeyboardInterrupt:
             print(f"{self.__class__.__name__} failed to complete on time")
