@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191124 02:04:33.586" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191124 02:27:03.331" rpa="false">
 <suite id="s1" name="Smartroomtest" source="D:\mapuasmartroom\smartroomtest.robot">
 <test id="s1-t1" name="Test">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>Please turn on the lights</arg>
+</arguments>
+<assign>
+<var>${luna.text}</var>
+</assign>
+<msg timestamp="20191124 02:27:03.973" level="INFO">${luna.text} = Please turn on the lights</msg>
+<status status="PASS" starttime="20191124 02:27:03.970" endtime="20191124 02:27:03.974"></status>
+</kw>
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
-<arg>${luna.text}</arg>
+<arg>${luna.nouns}</arg>
 </arguments>
-<status status="PASS" starttime="20191124 02:04:34.183" endtime="20191124 02:04:34.197"></status>
+<status status="PASS" starttime="20191124 02:27:03.974" endtime="20191124 02:27:03.983"></status>
 </kw>
-<status status="PASS" starttime="20191124 02:04:34.183" endtime="20191124 02:04:34.198" critical="yes"></status>
+<status status="PASS" starttime="20191124 02:27:03.969" endtime="20191124 02:27:03.984" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20191124 02:04:33.588" endtime="20191124 02:04:34.200"></status>
+<status status="PASS" starttime="20191124 02:27:03.333" endtime="20191124 02:27:03.986"></status>
 </suite>
 <statistics>
 <total>

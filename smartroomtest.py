@@ -44,6 +44,9 @@ class Smartroom(object):
             self._response = response
             return self._response
 
+    def __str__(self):
+        return str(self._response)
+
     @property
     def ngrams(self, n=2):
         self._ngrams = Text(self.text).ngrams(n=n)
@@ -72,6 +75,10 @@ class Smartroom(object):
     @polarities.setter
     def polarities(self, value):
         self._polarities = value
+
+    @property
+    def response(self):
+        return self._response
 
     @property
     def text(self):

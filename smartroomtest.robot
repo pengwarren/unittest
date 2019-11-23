@@ -3,4 +3,5 @@ Variables       smartroomtest.py
 
 * Test Cases *
 Test
-    Log To Console      ${luna.text}
+    ${luna.text}        Set Variable    Please turn on the lights
+    Log To Console      ${luna.nouns}
